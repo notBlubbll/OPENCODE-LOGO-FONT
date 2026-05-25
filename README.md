@@ -6,6 +6,8 @@ A real-time, browser-based glyph editor and multi-format exporter for creating A
 
 ![Preview](https://img.shields.io/badge/version-4.0%20Pro-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
+> **Disclaimer:** This is an independent fan project. It is **not affiliated with, endorsed by, or officially related to** Opencode or its creators.
+
 ## Features
 
 - **Real-Time Rendering Engine** — Type in the input box and watch your text instantly rendered as 4×4 Unicode block art in a retro terminal viewport.
