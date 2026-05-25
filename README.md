@@ -2,6 +2,9 @@
 
 A real-time, browser-based glyph editor and multi-format exporter for creating ASCII/Unicode block art logos. Design custom 4×4 block fonts, preview them instantly, and export as SVG, JavaScript arrays, or plain Unicode text.
 
+<img width="1383" height="711" alt="image" src="https://github.com/user-attachments/assets/a1e8eb6d-b0af-49a6-b23a-10f6c4a3cb17" />
+
+
 ![Preview](https://img.shields.io/badge/version-4.0%20Pro-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
