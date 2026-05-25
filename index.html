@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Sexy</title>
+  <!-- Google Fonts for premium styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="glow-bg"></div>
+  <div class="app-container">
+    
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="header-logo">
+        <span class="logo-symbol">▀▄</span>
+        <h1 class="logo-text">Open <span>Sexy</span></h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge badge-primary">v4.0 Pro</span>
+        <span class="badge badge-accent">Interactive Engine</span>
+        <button class="badge badge-theme" id="btn-toggle-theme" title="Toggle Light/Dark Mode">🌙</button>
+      </div>
+    </header>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="app-workspace">
+      
+      <!-- LEFT PANEL: CONTROLS -->
+      <section class="controls-panel card">
+        <h2 class="panel-title">Generator Options</h2>
+        
+        <!-- Text Input -->
+        <div class="form-group">
+          <label for="text-input">Input Text</label>
+          <input type="text" id="text-input" value="opencode" placeholder="Type text here..." autocomplete="off">
+        </div>
+
+        <!-- Customizations -->
+        <div class="control-row">
+          <div class="form-group flex-1">
+            <label for="char-spacing">Letter Spacing</label>
+            <div class="range-container">
+              <input type="range" id="char-spacing" min="0" max="4" value="1">
+              <span id="spacing-val" class="range-badge">1</span>
+            </div>
+          </div>
+          
+          <div class="form-group flex-1">
+            <label for="trim-rows">Trim Geometry</label>
+            <div class="toggle-container">
+              <label class="switch">
+                <input type="checkbox" id="trim-rows" checked>
+                <span class="slider"></span>
+              </label>
+              <span class="toggle-label">Trim empty top</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <div class="form-group flex-1">
+            <label for="char-shading">Char Bottom Shading</label>
+            <div class="toggle-container">
+              <label class="switch">
+                <input type="checkbox" id="char-shading">
+                <span class="slider"></span>
+              </label>
+              <span class="toggle-label">Add ░ to bottom area</span>
+            </div>
+          </div>
+          
+          <div class="form-group flex-1">
+            <label for="crt-overlay">CRT Effect</label>
+            <div class="toggle-container">
+              <label class="switch">
+                <input type="checkbox" id="crt-overlay" checked>
+                <span class="slider"></span>
+              </label>
+              <span class="toggle-label">Scanline overlay</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coloring Settings -->
+        <h3 class="section-subtitle">Multi-Color ANSI & Aesthetics</h3>
+        
+        <div class="form-group">
+          <label for="color-mode">Coloring Mode</label>
+          <select id="color-mode">
+            <option value="monochrome" selected>Monochrome Terminal (Classic)</option>
+            <option value="dual-tone">Two-Tone SVG (Primary & Accent)</option>
+            <option value="ansi">ANSI Colorized JS Array (Copiable)</option>
+          </select>
+        </div>
+
+        <!-- ANSI Theme Options -->
+        <div id="ansi-options-group" class="form-group sub-panel hidden">
+          <label for="ansi-colors-input">ANSI Color Scheme (Alternating Keys)</label>
+          <input type="text" id="ansi-colors-input" value="S, C, W" placeholder="Comma-separated tokens: S, C, W">
+          <small class="helper-text">Map color variables (e.g. S=Silver, C=Cyan, W=White) to letters sequentially.</small>
+
+          <div class="control-row margin-top-sm">
+            <div class="form-group flex-1">
+              <label for="ansi-bold">Enable Bold (B)</label>
+              <div class="toggle-container">
+                <label class="switch">
+                  <input type="checkbox" id="ansi-bold" checked>
+                  <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Include ${B}</span>
+              </div>
+            </div>
+            
+            <div class="form-group flex-1">
+              <label for="ansi-reset">Append Reset (R)</label>
+              <div class="toggle-container">
+                <label class="switch">
+                  <input type="checkbox" id="ansi-reset" checked>
+                  <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Include ${R}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Predefined Aesthetics Theme -->
+        <div class="form-group">
+          <label>Aesthetic Theme</label>
+          <div class="theme-picker" id="theme-picker">
+            <button class="theme-btn active" data-theme="cyan-glow" style="--btn-color: #00f0ff;"></button>
+            <button class="theme-btn" data-theme="amber-retro" style="--btn-color: #ffb700;"></button>
+            <button class="theme-btn" data-theme="toxic-green" style="--btn-color: #39ff14;"></button>
+            <button class="theme-btn" data-theme="cherry-shadow" style="--btn-color: #ff007f;"></button>
+            <button class="theme-btn" data-theme="clean-silver" style="--btn-color: #cfcecd;"></button>
+          </div>
+        </div>
+
+        <!-- Action Exports -->
+        <div class="action-grid">
+          <button class="btn btn-primary" id="btn-copy-raw">
+            <span class="btn-icon">📋</span> Copy Raw Text
+          </button>
+          <button class="btn btn-secondary" id="btn-copy-js">
+            <span class="btn-icon">⚡</span> Copy JS Array
+          </button>
+          <button class="btn btn-accent" id="btn-export-svg">
+            <span class="btn-icon">📐</span> Download SVG
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT PANEL: TERMINAL PREVIEW & OUTPUT -->
+      <section class="preview-panel">
+        <div class="terminal-card card">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="t-btn red"></span>
+              <span class="t-btn yellow"></span>
+              <span class="t-btn green"></span>
+            </div>
+            <div class="terminal-title">bash - unicode-studio-v4.0.sh</div>
+            <div class="terminal-status">ONLINE</div>
+          </div>
+          
+          <div class="terminal-body scrollable">
+            <div class="crt-overlay"></div>
+            <pre class="terminal-output" id="output-rendered">
+<!-- Will be populated dynamically -->
+            </pre>
+          </div>
+        </div>
+
+        <!-- Copiable JS Preview Container -->
+        <div class="code-preview-card card">
+          <div class="code-header">
+            <span>JavaScript Target Syntax</span>
+            <button class="btn-inline-copy" id="btn-inline-copy-js">Copy</button>
+          </div>
+          <div class="code-body">
+            <pre><code id="output-code-syntax"></code></pre>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- INTERACTIVE FONT BOOK SECTION -->
+    <section class="font-book-section card">
+      <div class="font-book-header">
+        <div class="font-book-title-group">
+          <h2 class="panel-title">Interactive Font-Book</h2>
+          <p class="panel-desc">Click on any character below to open the vector matrix editor and customize its block layout in real-time!</p>
+        </div>
+        <div class="font-book-actions">
+          <button class="btn btn-secondary btn-sm" id="btn-reset-font">Reset to Default Font</button>
+        </div>
+      </div>
+      
+      <div class="font-book-grid" id="font-book-grid">
+        <!-- populated dynamically -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- INTERACTIVE MATRIX QUICK EDITOR MODAL -->
+  <div class="modal-backdrop hidden" id="editor-modal">
+    <div class="modal card">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Character '<span id="editing-char">a</span>'</h3>
+        <button class="btn-close" id="btn-close-modal">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="editor-workspace">
+          
+          <!-- Interactive 4x4 Grid Matrix -->
+          <div class="matrix-grid-container">
+            <div class="matrix-grid" id="matrix-grid">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+
+          <!-- Side controls / Block Palette -->
+          <div class="editor-palette">
+            <h4 class="palette-title">Block Palette</h4>
+            <p class="palette-desc">Select a block type, then click any cell in the grid to paint it.</p>
+            
+            <div class="palette-tools" id="palette-tools">
+              <button class="palette-tool" data-block=" ">
+                <span class="tool-preview block-empty"></span>
+                <span class="tool-name">Clear (Space)</span>
+              </button>
+              <button class="palette-tool" data-block="█">
+                <span class="tool-preview">█</span>
+                <span class="tool-name">Full Block</span>
+              </button>
+              
+              <div class="palette-divider">Horizontal Blocks</div>
+              
+              <button class="palette-tool" data-block="▀">
+                <span class="tool-preview">▀</span>
+                <span class="tool-name">Top Half</span>
+              </button>
+              <button class="palette-tool" data-block="▔">
+                <span class="tool-preview">▔</span>
+                <span class="tool-name">Top 1/8</span>
+              </button>
+              <button class="palette-tool" data-block="▁">
+                <span class="tool-preview">▁</span>
+                <span class="tool-name">Lower 1/8</span>
+              </button>
+              <button class="palette-tool" data-block="▂">
+                <span class="tool-preview">▂</span>
+                <span class="tool-name">Lower 1/4</span>
+              </button>
+              <button class="palette-tool" data-block="▃">
+                <span class="tool-preview">▃</span>
+                <span class="tool-name">Lower 3/8</span>
+              </button>
+              <button class="palette-tool" data-block="▄">
+                <span class="tool-preview">▄</span>
+                <span class="tool-name">Lower Half</span>
+              </button>
+              <button class="palette-tool" data-block="▅">
+                <span class="tool-preview">▅</span>
+                <span class="tool-name">Lower 5/8</span>
+              </button>
+              <button class="palette-tool" data-block="▆">
+                <span class="tool-preview">▆</span>
+                <span class="tool-name">Lower 3/4</span>
+              </button>
+              <button class="palette-tool" data-block="▇">
+                <span class="tool-preview">▇</span>
+                <span class="tool-name">Lower 7/8</span>
+              </button>
+              
+              <div class="palette-divider">Vertical Blocks</div>
+              
+              <button class="palette-tool" data-block="▌">
+                <span class="tool-preview">▌</span>
+                <span class="tool-name">Left Half</span>
+              </button>
+              <button class="palette-tool" data-block="▍">
+                <span class="tool-preview">▍</span>
+                <span class="tool-name">Left 3/8</span>
+              </button>
+              <button class="palette-tool" data-block="▎">
+                <span class="tool-preview">▎</span>
+                <span class="tool-name">Left 1/4</span>
+              </button>
+              <button class="palette-tool" data-block="▏">
+                <span class="tool-preview">▏</span>
+                <span class="tool-name">Left 1/8</span>
+              </button>
+              <button class="palette-tool" data-block="▐">
+                <span class="tool-preview">▐</span>
+                <span class="tool-name">Right Half</span>
+              </button>
+              <button class="palette-tool" data-block="▕">
+                <span class="tool-preview">▕</span>
+                <span class="tool-name">Right 1/8</span>
+              </button>
+              
+              <div class="palette-divider">Quadrants</div>
+              
+              <button class="palette-tool" data-block="▖">
+                <span class="tool-preview">▖</span>
+                <span class="tool-name">Lower Left</span>
+              </button>
+              <button class="palette-tool" data-block="▗">
+                <span class="tool-preview">▗</span>
+                <span class="tool-name">Lower Right</span>
+              </button>
+              <button class="palette-tool" data-block="▘">
+                <span class="tool-preview">▘</span>
+                <span class="tool-name">Upper Left</span>
+              </button>
+              <button class="palette-tool" data-block="▝">
+                <span class="tool-preview">▝</span>
+                <span class="tool-name">Upper Right</span>
+              </button>
+              
+              <div class="palette-divider">Shades</div>
+              
+              <button class="palette-tool" data-block="░">
+                <span class="tool-preview">░</span>
+                <span class="tool-name">Light Shade</span>
+              </button>
+              <button class="palette-tool" data-block="▒">
+                <span class="tool-preview">▒</span>
+                <span class="tool-name">Medium Shade</span>
+              </button>
+              <button class="palette-tool" data-block="▓">
+                <span class="tool-preview">▓</span>
+                <span class="tool-name">Dark Shade</span>
+              </button>
+            </div>
+
+            <div class="editor-actions">
+              <button class="btn btn-primary btn-full" id="btn-apply-glyph">Save & Apply</button>
+              <button class="btn btn-secondary btn-full" id="btn-clear-glyph">Clear Matrix</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="generator.js"></script>
+</body>
+</html>
