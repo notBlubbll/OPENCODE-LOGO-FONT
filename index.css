@@ -897,15 +897,77 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .font-book-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
 }
 
 @media (max-width: 768px) {
   .font-book-grid {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
   }
+
+  .char-card {
+    padding: 8px;
+  }
+
+  .char-card-label {
+    font-size: 0.9rem;
+  }
+
+  .char-card-visual {
+    font-size: 0.75rem;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .font-book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .char-card::before {
+    display: none;
+  }
+}
+
+  .char-card-visual {
+    font-size: 0.75rem;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .font-book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .char-card::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .font-book-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  .char-card {
+    padding: 8px;
+  }
+
+  .char-card-label {
+    font-size: 0.9rem;
+  }
+
+  .char-card-visual {
+    font-size: 0.75rem;
+    padding: 4px;
+  }
+}
   
   .char-card {
     padding: 8px;
@@ -923,8 +985,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 @media (max-width: 480px) {
   .font-book-grid {
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
   }
   
   .char-card::before {
@@ -1154,7 +1216,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .palette-tools {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 8px;
   margin: 8px 0;
 }
