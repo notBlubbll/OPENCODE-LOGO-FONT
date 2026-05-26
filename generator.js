@@ -3,7 +3,7 @@
  * Customizer, Real-Time Paint Matrix Editor & Multi-Format Exporter
  */
 
-// Global Default Font Map
+// Global Default Font Map (shuvascii-inspired: open, rounded aesthetic)
 const DEFAULT_BLOCKS = {
   'a': ['    ', '▀▀▀█', '█▀▀█', '▀▀▀▀'],
   'b': ['▄   ', '█▀▀▄', '█  █', '▀▀▀▀'],
@@ -12,7 +12,7 @@ const DEFAULT_BLOCKS = {
   'e': ['    ', '█▀▀█', '█▀▀▀', '▀▀▀▀'],
   'f': ['    ', ' ▄▀▀', ' █▀▀', ' █  '],
   'g': ['    ', '█▀▀█', '▀▀▀█', '▀▀▀▀'],
-  'h': ['▄   ', '█▀▀▄', '█  █', '▀  ▀'],
+  'h': ['▄   ', '█▀▀█', '█  █', '▀  ▀'],
   'i': ['    ', ' ▀  ', ' █  ', ' ▀  '],
   'j': ['  ▄ ', '  ▄ ', '▄ █ ', '▀▀  '],
   'k': ['    ', '█  █', '█▀▀▄', '▀  ▀'],
@@ -26,25 +26,58 @@ const DEFAULT_BLOCKS = {
   's': ['    ', '█▀▀▀', '▀▀▀█', '▀▀▀▀'],
   't': ['', '▀██▀', ' ██', ' ▀▀'],
   'u': ['    ', '█  █', '█  █', '▀▀▀▀'],
-  'v': ['    ', '█  █', '▀▄▄▀', ' ▀▀ '],
+  'v': ['    ', '█  █', '█  █', ' ▀▀ '],
   'w': ['    ', '█  █', '█▐▌█', '▀▀▀▀'],
   'x': ['    ', '█  █', '▄▀▀▄', '▀  ▀'],
   'y': ['    ', '█  █', '▀▀▀█', '▀▀▀▀'],
-  'z': ['▀▀▀▌', ' ▄▀', '▀▀▀▀', '    '],
-  '0': ['    ', '█▀▀█', '█  █', '▀▀▀▀'],
+  'z': ['▀▀▀▌', ' ▄▀ ', '▀▄  ', '▀▀▀▀'],
+  '0': ['    ', '█▀▀█', '█▄▄█', '▀▀▀▀'],
   '1': ['    ', ' ▀█ ', '  █ ', '  ▀ '],
-  '2': ['    ', '▀▀▀█', '█▀▀▀', '▀▀▀▀'],
+  '2': ['    ', '▀▀▀█', '▄▀▀▀', '▀▀▀▀'],
   '3': ['    ', '▀▀▀█', ' ▀▀█', '▀▀▀▀'],
-  '4': ['    ', '█  █', '▀▀▀█', '   ▀'],
+  '4': ['    ', '█ ▄█', '▀▀▀█', '   ▀'],
   '5': ['    ', '█▀▀▀', '▀▀▀█', '▀▀▀▀'],
   '6': ['    ', '█▀▀▀', '█▀▀█', '▀▀▀▀'],
-  '7': ['    ', '▀▀▀█', '   █', '   ▀'],
-  '8': ['    ', '█▀▀█', '█▀▀█', '▀▀▀▀'],
+  '7': ['    ', '▀▀▀█', '  ▄▀', '  ▀ '],
+  '8': ['    ', '█▀▀█', '█▄▄█', '▀▀▀▀'],
   '9': ['    ', '█▀▀█', '▀▀▀█', '▀▀▀▀'],
   ' ': ['    ', '    ', '    ', '    '],
   '.': ['    ', '    ', '    ', ' ▀  '],
   '-': ['    ', '    ', '▀▀▀▀', '    '],
-  '_': ['    ', '    ', '    ', '▀▀▀▀']
+  '_': ['    ', '    ', '    ', '▀▀▀▀'],
+  '+': ['    ', ' ▀▀ ', '▀▀▀▀', ' ▀▀ '],
+  '=': ['    ', '▀▀▀▀', '    ', '▀▀▀▀'],
+  '!': [' ▀  ', ' █  ', ' ▄  ', ' ▀  '],
+  '?': ['▀▀▀█', '  ▄▀', ' ▄  ', ' ▀  '],
+  '*': ['▀▄▄▀', ' █  ', '▀▄▄▀', '    '],
+  '#': [' ▀▀ ', '▀▀▀▀', ' ▀▀ ', '▀▀▀▀'],
+  '@': ['▀▀▀█', '█ ▄▀', '█ ▄█', '▀▀▀▀'],
+  '$': [' ▀▀ ', '█▀▀▄', '▄▀▀█', '▀▀  '],
+  '%': ['█ ▄█', ' ▀ ▀', '█▄ █', '▀▀▀▀'],
+  '&': ['▀▀▀█', '▄▀▀ ', '█▄ █', '▀▀▀▀'],
+  '(': [' ▀▀ ', ' █  ', ' █  ', ' ▀▀ '],
+  ')': [' ▀▀ ', '  █ ', '  █ ', ' ▀▀ '],
+  '[': ['▀▀▀ ', ' █  ', ' █  ', '▀▀▀ '],
+  ']': [' ▀▀▀', '  █ ', '  █ ', ' ▀▀▀'],
+  '{': [' ▀▀ ', '▄▀  ', '▄▀  ', ' ▀▀ '],
+  '}': [' ▀▀ ', ' ▀▄ ', ' ▀▄ ', ' ▀▀ '],
+  '/': ['   ▄', '  ▄ ', ' ▄  ', '▄   '],
+  '\\': ['▄   ', ' ▄  ', '  ▄ ', '   ▄'],
+  '|': [' ▀  ', ' █  ', ' █  ', ' ▀  '],
+  '<': ['   ▄', ' ▄▀ ', '▄▀  ', '    '],
+  '>': ['▄   ', '▀▄  ', ' ▀▄ ', '    '],
+  '^': [' ▄▄ ', '█ ▄█', '    ', '    '],
+  '~': ['    ', ' ▀▄ ', '▄▀ ▄', '    '],
+  '`': ['▄▀  ', ' ▄  ', '    ', '    '],
+  "'": ['▀   ', '    ', '    ', '    '],
+  '"': ['▀ ▀ ', '    ', '    ', '    '],
+  ':': ['    ', ' ▀  ', '    ', ' ▀  '],
+  ';': ['    ', ' ▀  ', '    ', ' ▄▀ '],
+  ',': ['    ', '    ', '    ', ' ▄▀ '],
+  '↑': [' ▄▄ ', '▄▀▄▀', '▀  ▀', '    '],
+  '↓': ['    ', '▀  ▀', '▄▀▄▀', ' ▀▀ '],
+  '→': ['    ', ' ▀▀▀', '▄▀▄█', ' ▀▀▀'],
+  '←': ['    ', '▀▀▀ ', '█▄▀▄', '▀▀▀ ']
 };
 
 let BLOCKS = JSON.parse(JSON.stringify(DEFAULT_BLOCKS));
@@ -622,6 +655,129 @@ btnExportSvg.addEventListener('click', () => {
         }
         else if (block === '░') {
           svgPaths += `  <rect x="${cellX}" y="${cellY}" width="${size}" height="${size}" fill="${fillHex}" opacity="0.3" />\n`;
+        }
+        else if (block === '▒') {
+          svgPaths += `  <rect x="${cellX}" y="${cellY}" width="${size}" height="${size}" fill="${fillHex}" opacity="0.55" />\n`;
+        }
+        else if (block === '▓') {
+          svgPaths += `  <rect x="${cellX}" y="${cellY}" width="${size}" height="${size}" fill="${fillHex}" opacity="0.8" />\n`;
+        }
+        else if (block === '─') {
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.4375}" width="${size}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '│') {
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '═') {
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.3125}" width="${size}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.5625}" width="${size}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '║') {
+          svgPaths += `  <rect x="${cellX + size * 0.3125}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX + size * 0.5625}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '┌') {
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.5625}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '┐') {
+          svgPaths += `  <rect x="${cellX}" y="${cellY}" width="${size * 0.5625}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '└') {
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY + size * 0.875}" width="${size * 0.5625}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '┘') {
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.875}" width="${size * 0.5625}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '├') {
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY + size * 0.4375}" width="${size * 0.5625}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '┤') {
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.4375}" width="${size * 0.5625}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '┬') {
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.4375}" width="${size}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size * 0.5625}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '┴') {
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.4375}" width="${size}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY + size * 0.4375}" width="${size * 0.125}" height="${size * 0.5625}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '┼') {
+          svgPaths += `  <rect x="${cellX + size * 0.4375}" y="${cellY}" width="${size * 0.125}" height="${size}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.4375}" width="${size}" height="${size * 0.125}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '╭') {
+          svgPaths += `  <path d="M${cellX + size} ${cellY + size * 0.5} L${cellX + size * 0.5} ${cellY + size * 0.5} A${size * 0.5} ${size * 0.5} 0 0 0 ${cellX + size * 0.5} ${cellY + size}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '╮') {
+          svgPaths += `  <path d="M${cellX} ${cellY + size * 0.5} L${cellX + size * 0.5} ${cellY + size * 0.5} A${size * 0.5} ${size * 0.5} 0 0 1 ${cellX + size * 0.5} ${cellY + size}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '╯') {
+          svgPaths += `  <path d="M${cellX} ${cellY + size * 0.5} L${cellX + size * 0.5} ${cellY + size * 0.5} A${size * 0.5} ${size * 0.5} 0 0 0 ${cellX + size * 0.5} ${cellY}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '╰') {
+          svgPaths += `  <path d="M${cellX + size} ${cellY + size * 0.5} L${cellX + size * 0.5} ${cellY + size * 0.5} A${size * 0.5} ${size * 0.5} 0 0 1 ${cellX + size * 0.5} ${cellY}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '╱') {
+          svgPaths += `  <path d="M${cellX + size} ${cellY} L${cellX} ${cellY + size}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '╲') {
+          svgPaths += `  <path d="M${cellX} ${cellY} L${cellX + size} ${cellY + size}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '╳') {
+          svgPaths += `  <path d="M${cellX + size} ${cellY} L${cellX} ${cellY + size}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+          svgPaths += `  <path d="M${cellX} ${cellY} L${cellX + size} ${cellY + size}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '▲') {
+          svgPaths += `  <polygon points="${cellX + size / 2},${cellY} ${cellX + size},${cellY + size} ${cellX},${cellY + size}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '▼') {
+          svgPaths += `  <polygon points="${cellX},${cellY} ${cellX + size},${cellY} ${cellX + size / 2},${cellY + size}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '◄') {
+          svgPaths += `  <polygon points="${cellX + size},${cellY} ${cellX + size},${cellY + size} ${cellX},${cellY + size / 2}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '►') {
+          svgPaths += `  <polygon points="${cellX},${cellY} ${cellX},${cellY + size} ${cellX + size},${cellY + size / 2}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '●') {
+          svgPaths += `  <circle cx="${cellX + size / 2}" cy="${cellY + size / 2}" r="${size / 2}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '○') {
+          svgPaths += `  <circle cx="${cellX + size / 2}" cy="${cellY + size / 2}" r="${size / 2}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '◆') {
+          svgPaths += `  <polygon points="${cellX + size / 2},${cellY} ${cellX + size},${cellY + size / 2} ${cellX + size / 2},${cellY + size} ${cellX},${cellY + size / 2}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '◇') {
+          svgPaths += `  <polygon points="${cellX + size / 2},${cellY} ${cellX + size},${cellY + size / 2} ${cellX + size / 2},${cellY + size} ${cellX},${cellY + size / 2}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '•') {
+          svgPaths += `  <circle cx="${cellX + size / 2}" cy="${cellY + size / 2}" r="${size * 0.25}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '✕') {
+          svgPaths += `  <path d="M${cellX + size * 0.2} ${cellY + size * 0.2} L${cellX + size * 0.8} ${cellY + size * 0.8}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+          svgPaths += `  <path d="M${cellX + size * 0.8} ${cellY + size * 0.2} L${cellX + size * 0.2} ${cellY + size * 0.8}" fill="none" stroke="${fillHex}" stroke-width="${size * 0.125}" />\n`;
+        }
+        else if (block === '✦') {
+          svgPaths += `  <path d="M${cellX + size / 2} ${cellY} L${cellX + size * 0.55} ${cellY + size * 0.45} L${cellX + size} ${cellY + size / 2} L${cellX + size * 0.55} ${cellY + size * 0.55} L${cellX + size / 2} ${cellY + size} L${cellX + size * 0.45} ${cellY + size * 0.55} L${cellX} ${cellY + size / 2} L${cellX + size * 0.45} ${cellY + size * 0.45} Z" fill="${fillHex}" />\n`;
+        }
+        else if (block === '✚') {
+          svgPaths += `  <rect x="${cellX + size * 0.375}" y="${cellY + size * 0.125}" width="${size * 0.25}" height="${size * 0.75}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX + size * 0.125}" y="${cellY + size * 0.375}" width="${size * 0.75}" height="${size * 0.25}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '✜') {
+          svgPaths += `  <rect x="${cellX + size * 0.375}" y="${cellY}" width="${size * 0.25}" height="${size}" fill="${fillHex}" />\n`;
+          svgPaths += `  <rect x="${cellX}" y="${cellY + size * 0.375}" width="${size}" height="${size * 0.25}" fill="${fillHex}" />\n`;
+        }
+        else if (block === '⌂') {
+          svgPaths += `  <polygon points="${cellX + size / 2},${cellY} ${cellX + size},${cellY + size * 0.5} ${cellX + size * 0.75},${cellY + size * 0.5} ${cellX + size * 0.75},${cellY + size} ${cellX + size * 0.25},${cellY + size} ${cellX + size * 0.25},${cellY + size * 0.5} ${cellX},${cellY + size * 0.5}" fill="${fillHex}" />\n`;
         }
       }
     }
